@@ -4,9 +4,14 @@ module.exports = {
       "./components/**/*.{js,ts,jsx,tsx}",
    ],
    theme: {
-      extend: {},
+      extend: {
+         colors: {
+            main: "#032541",
+            secondary: "#14B6DB"
+         },
+      },
       fontFamily: {
-         crimson: ["Crimson Pro", "serif"],
+         lato: ["Lato", "sans-serif"],
       },
    },
    plugins: [],

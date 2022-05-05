@@ -1,5 +1,6 @@
 {
-  "name": "find_my_fav_movie",
+  "name": "@geevadon/find_my_fav_movie",
+  "author": "Geevadon",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,7 +12,8 @@
   "dependencies": {
     "next": "12.1.6",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-icons": "^4.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",

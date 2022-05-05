@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
             />
             <link rel="icon" href="/favicon.ico" />
             <link
-               href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200;0,300;0,500;0,700;0,900;1,500&display=swap"
+               href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
                rel="stylesheet"
             />
          </Head>
