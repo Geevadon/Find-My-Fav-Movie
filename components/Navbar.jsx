@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { FaSearch, FaStar } from "react-icons/fa";
+import { FaSearch, FaHeart } from "react-icons/fa";
 
 const Navbar = () => {
    return (
@@ -13,10 +13,12 @@ const Navbar = () => {
          </h2>
          <div className="flex items-center gap-4">
             <Link href="/favorite">
-               <FaStar
-                  className="text-3xl cursor-pointer"
-                  title="My Favorite Movies"
-               />
+               <a>
+                  <FaHeart
+                     className="text-3xl cursor-pointer"
+                     title="My Favorite Movies"
+                  />
+               </a>
             </Link>
 
             <form className="flex gap-2 items-center border border-secondary px-2 py-1 rounded">

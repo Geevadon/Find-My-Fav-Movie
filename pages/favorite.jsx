@@ -1,6 +1,6 @@
 export default function Favorite() {
    return (
-      <div className="mt-8 px-20">
+      <div className="mt-8 px-20 min-h-[80vh]">
          <h1 className="text-2xl">Favorite movies...</h1>
       </div>
    );

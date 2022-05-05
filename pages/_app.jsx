@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import "../styles/globals.css";
 
@@ -21,6 +22,7 @@ function MyApp({ Component, pageProps }) {
          <div className="font-lato bg-main text-white min-h-screen w-full">
             <Navbar />
             <Component {...pageProps} />
+            <Footer />
          </div>
       </>
    );
