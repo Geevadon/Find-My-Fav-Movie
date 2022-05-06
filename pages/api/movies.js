@@ -9,9 +9,12 @@ export default function handler(req, res) {
 
    const { page } = req.query;
 
-   fetch(`${API_URL}/popular?api_key=${process.env.TMDB_API_KEY}&page=${page}`, {
-      method: "GET",
-   })
+   fetch(
+      `${API_URL}/movie/popular?api_key=${process.env.TMDB_API_KEY}&page=${page}`,
+      {
+         method: "GET",
+      }
+   )
       .then((response) => response.json())
       .then((data) => {
          return res.status(200).json(data);
