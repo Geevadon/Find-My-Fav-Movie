@@ -14,11 +14,14 @@ const MovieItem = ({ movie }) => {
          <div
             className={`${
                show ? "opacity-90" : "opacity-0"
-            } bg-black absolute w-full min-h-[100%] top-0 text-2xl p-2 flex flex-col items-center justify-between gap-2 transition-all transition-opacity duration-500`}
+            } bg-black absolute w-full min-h-[100%] top-0 text-2xl p-2 flex flex-col items-center justify-between gap-2 transition-all transition-opacity duration-500 overflow-auto`}
          >
-            <FaRegHeart title="Add to favorites"/>
+            <FaRegHeart title="Add to favorites" />
             {/* <FaHeart title="Remove to favorites"/> */}
-            <p className="text-sm text-center">{ movie.overview }</p>
+            <p className="text-sm text-center">
+               {movie.overview.substr(0, 600)}
+               {movie.overview.length >= 600 && "..."}
+            </p>
          </div>
          <img
             src={IMG_API + movie.poster_path}

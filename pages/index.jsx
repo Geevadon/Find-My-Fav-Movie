@@ -5,18 +5,33 @@ import MovieItem from "../components/MovieItem";
 
 export default function Home() {
    const [movies, setMovies] = useState([]);
+   const [page, setPage] = useState(3);
+   const [totalPages, setTotalPages] = useState(0);
+
+   const prev = () => {
+      if (page > 1) {
+         setPage(page - 1);
+      }
+   };
+
+   const next = () => {
+      if (page < totalPages) {
+         setPage(page + 1);
+      }
+   };
 
    const fetchPopularMovies = async () => {
-      fetch("/api/popular", { method: "GET" })
+      fetch(`/api/popular?page=${page}`, { method: "GET" })
          .then((response) => response.json())
          .then((data) => {
             setMovies(data.results);
+            setTotalPages(data.total_pages);
          });
    };
 
    useEffect(() => {
       fetchPopularMovies();
-   }, []);
+   }, [page]);
 
    return (
       <>
@@ -33,11 +48,17 @@ export default function Home() {
                </div>
 
                <div className="flex justify-center items-center gap-2 text-2xl py-4 font-bold">
-                  <FaArrowLeft className="cursor-pointer" />
+                  <FaArrowLeft
+                     className="cursor-pointer"
+                     onClick={() => prev()}
+                  />
                   <div className="flex justify-center items-center border-2 border-secondary rounded-full p-2">
-                     3
+                     {page}
                   </div>
-                  <FaArrowRight className="cursor-pointer" />
+                  <FaArrowRight
+                     className="cursor-pointer"
+                     onClick={() => next()}
+                  />
                </div>
             </>
          )}

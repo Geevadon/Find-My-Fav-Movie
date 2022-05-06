@@ -7,7 +7,9 @@ export default function handler(req, res) {
          .json({ message: "Only GET requests are allowed." });
    }
 
-   fetch(`${API_URL}/popular?api_key=${process.env.TMDB_API_KEY}`, {
+   const { page } = req.query;
+
+   fetch(`${API_URL}/popular?api_key=${process.env.TMDB_API_KEY}&page=${page}`, {
       method: "GET",
    })
       .then((response) => response.json())
