@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { FaSearch, FaHeart } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 const Navbar = ({ search, setPage }) => {
    const [keyword, setKeyword] = useState("");
+   const router = useRouter();
 
    // Search handler
    const searchHandler = (e) => {
       e.preventDefault();
 
-      setPage (1);
+      setPage(1);
 
       setKeyword(e.target.value);
 
@@ -34,22 +36,24 @@ const Navbar = ({ search, setPage }) => {
                </a>
             </Link>
 
-            <form
-               className="flex gap-2 items-center border border-secondary px-2 py-1 rounded"
-               onSubmit={searchHandler}
-            >
-               <button type="submit">
-                  <FaSearch className="cursor-pointer" />
-               </button>
+            {router.pathname !== "/favorite" && (
+               <form
+                  className="flex gap-2 items-center border border-secondary px-2 py-1 rounded"
+                  onSubmit={searchHandler}
+               >
+                  <button type="submit">
+                     <FaSearch className="cursor-pointer" />
+                  </button>
 
-               <input
-                  type="text"
-                  placeholder="Find a movie here..."
-                  className="outline-none bg-main text-normal w-full placeholder:text-white"
-                  value={keyword}
-                  onChange={(e) => searchHandler(e)}
-               />
-            </form>
+                  <input
+                     type="text"
+                     placeholder="Find a movie here..."
+                     className="outline-none bg-main text-normal w-full placeholder:text-white"
+                     value={keyword}
+                     onChange={(e) => searchHandler(e)}
+                  />
+               </form>
+            )}
          </div>
       </nav>
    );

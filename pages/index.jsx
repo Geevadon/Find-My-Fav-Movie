@@ -1,10 +1,48 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Loader from "../components/Loader";
 import MovieItem from "../components/MovieItem";
 
 export default function Home({ states, handlers }) {
-   useEffect(() => {}, [states.page, states.keyword]);
+   // States
+   const [reload, setReload] = useState("");
+   const [savedFavMovies, setSavedFavMovies] = useState(
+      typeof window !== "undefined" && localStorage.getItem("FAVMOVIES")
+         ? JSON.parse(localStorage.getItem("FAVMOVIES"))
+         : []
+   );
+
+   // useEffect
+   useEffect(() => {}, [states.page, states.keyword, reload]);
+
+   // Favorite handler
+   const favoriteHandler = (movie) => {
+      // Change reload value
+      setReload(Math.random());
+
+      // Create a state copy
+      const favMoviesCopy = savedFavMovies;
+
+      // Check if the movie is already saved
+      const checkMovie = (m) => {
+         return m.id === movie.id;
+      };
+
+      // If the movie doesn't exist, add it. Otherwise, remove it.
+      if (favMoviesCopy.some(checkMovie)) {
+         favMoviesCopy = favMoviesCopy.filter((m) => m.id !== movie.id);
+      } else {
+         favMoviesCopy.push(movie);
+      }
+
+      // Add the movie into the favorite array
+
+      // Set the sate
+      setSavedFavMovies(favMoviesCopy);
+
+      // Update the local storage
+      localStorage.setItem("FAVMOVIES", JSON.stringify(favMoviesCopy));
+   };
 
    return (
       <>
@@ -20,7 +58,11 @@ export default function Home({ states, handlers }) {
             <>
                <div className="mt-8 px-8 md:px-10 lg:px-20 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
                   {states.movies?.map((movie) => (
-                     <MovieItem movie={movie} key={Math.random()} />
+                     <MovieItem
+                        movie={movie}
+                        favoriteHandler={favoriteHandler}
+                        key={Math.random()}
+                     />
                   ))}
                </div>
 
