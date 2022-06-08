@@ -21,7 +21,7 @@ FindMyFavMovie is a simple web application that allows you to find and save in y
 
 ## Demo
 
--  https://find-my-fav-movie.herokuapp.com/
+-  <a href="https://find-my-fav-movie.herokuapp.com" target="_blanck">https://find-my-fav-movie.herokuapp.com</a>
 
 # Screenshots
 
